@@ -1,0 +1,54 @@
+site_name: GreenUtils
+site_description: Documentation for GreenUtils
+site_url: https://GreenTheBlaze.github.io/GreenUtils_Roblox
+
+repo_name: GreenTheBlaze/GreenUtils_Roblox
+repo_url: https://github.com/GreenTheBlaze/GreenUtils_Roblox
+edit_uri: ""
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    #- navigation.instant
+    #- navigation.sections
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  highlightjs: true
+  hljs_languages:
+    - lua
+
+extra_javascript:
+  - javascripts/tags.js
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+
+nav:
+  - Home:
+    - Introduction: index.md
+    - Features: features.md
+    - Installation: installation.md
+    - Third Parties: third_parties.md
+    - API: api.md
+  - Contributing: contributing.md
