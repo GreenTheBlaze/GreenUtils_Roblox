@@ -1,4 +1,4 @@
-site_name: GreenUtils
+site_name: GreenUtils_Roblox
 site_description: Documentation for GreenUtils
 site_url: https://GreenTheBlaze.github.io/GreenUtils_Roblox
 
@@ -48,7 +48,5 @@ nav:
   - Home:
     - Introduction: index.md
     - Features: features.md
-    - Installation: installation.md
-    - Third Parties: third_parties.md
-    - API: api.md
-  - Contributing: contributing.md
+    - InstanceUtils API: instanceutils-api.md
+    - AssertionUtils API: assertionutils-api.md
