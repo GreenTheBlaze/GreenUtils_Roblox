@@ -4,7 +4,7 @@ If you're one of Green's friends or people authorized to use GreenUtils and you'
 
 This documentation serves as a knowledge base for our package, everything here is kept up-to-date and should be referred to over anything else!
 
-Now, before we begin, first I'd like to introduce you to our example instance hierarchy tree which will be referred to throughout every API page you'll come across...
+Now, before we begin, first I'd like to introduce you to our example instance hierarchy tree which will be referred to throughout every API page you'll come across:
 ```
 .
 ├─ Workspace           # Object 1 - ClassName: Workspace
@@ -44,6 +44,7 @@ Now, before we begin, first I'd like to introduce you to our example instance hi
 
 Here's some additional info you may need to know about the way I've structured this before we continue:
 * The default `BrickColor` for `BasePart` instances if not mentioned is **Medium stone grey**.
+
 * All examples of code within the API sheets and anything relating to indexing of the hierarchy should relate to how it's been structured above, NOT how Roblox chooses to output results in Studio. The reason for this is that, Roblox is really weird about object finding, e.g., if I want to print out what `workspace.Part1.ClassName` is, on here it might look output "MeshPart" (Object 6), but on Roblox, it may have looked up differently. Unfortunately I cannot resolve this on the place file provided, so this will have to remain the same...
 
 You can also download the place file if needed from [here](https://github.com/GreenTheBlaze/GreenUtils_Roblox/blob/main/dependencies/GreenUtilsHierarchyReference.rbxl) that the instances were originally arranged in!
