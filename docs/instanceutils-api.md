@@ -8,10 +8,13 @@ Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes
 **Syntax:** `InstanceUtils:createInstance(className: Instance, propertiesTable: {any}) → Instance`
 
 **Parameters:**
+
 * `className`: [string](https://create.roblox.com/docs/luau/strings) - Class name of the new object to create.
+
 * `propertiesTable`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The table in which the properties to configure for the new object should be listed.
 
 **Returns:**
+
 * [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object created.
 
 **Code Example:**
@@ -34,9 +37,11 @@ Creates multiple instances based on the provided configuration array. Extended v
 **Syntax:** `InstanceUtils:createInstances(instancesConfig: {{any}}) → ...Instance`
 
 **Parameters:**
+
 * `instancesConfig: []`: The configuration array for each individual instance being created.
 
 **Returns:**
+
 * [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
 
 **Code Example:**
@@ -69,10 +74,13 @@ Creates a full copy of the provided `cloneInstance` including all of its descend
 **Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesTable: {[string]: any}) → ...Instance`
 
 **Parameters:**
+
 * `cloneInstance`: [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The configuration array for each individual instance being created.
+
 * `propertiesTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration array for each individual instance being created.
 
 **Returns:**
+
 * [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
 
 **Code Example:**
@@ -106,9 +114,11 @@ Creates full copies Instance objects based on the provided configuration array. 
 **Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance) → ...Instance`
 
 **Parameters:**
+
 * `instancesConfig:` [`Array`](https://create.roblox.com/docs/luau/tables#arrays)`: The configuration array for each individual instance being created.
 
 **Returns:**
+
 * [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
 
 **Code Example:**
@@ -144,9 +154,11 @@ Returns an array (a numerically indexed table) containing all direct siblings of
 **Syntax:** `InstanceUtils:getSiblings(child: Instance) → {Instance}`
 
 **Parameters:**
+
 * `child`: The instance to whom the siblings are going to be searched from.
 
 **Returns:**
+
 * [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `child`'s siblings.
 
 **Code Example:**
@@ -162,9 +174,11 @@ Returns an array containing all ancestors of the given `descendant`. Specificall
 **Syntax:** `InstanceUtils:getAncestors(descendant: Instance) → {Instance}`
 
 **Parameters:**
+
 * `descendant`: The instance to whom the ancestors are going to be searched from.
 
 **Returns:**
+
 * [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `descendant`'s ancestors.
 
 **Code Example:**
@@ -180,10 +194,13 @@ Returns an array containing all children of the given `parent` of which their `O
 **Syntax:** `InstanceUtils:getChildrenOfName(parent: Instance, name: string) → {Instance}`
 
 **Parameters:**
+
 * `parent`: The instance to whom the children are going to be searched from.
+
 * `name`: The `Object.Name` to be looked for.
 
 **Returns:**
+
 * [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `parent`'s children.
 
 **Code Example:**
@@ -203,9 +220,11 @@ Returns an array containing all siblings of the given `parent` of which their `O
 **Syntax:** `InstanceUtils:getSiblingsOfName(child: Instance, name: string) → {Instance}`
 
 **Parameters:**
+
 * `sibling`: The instance to whom the siblings are going to be searched from.
 
 **Returns:**
+
 * [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `sibling`'s siblings.
 
 **Code Example:**
