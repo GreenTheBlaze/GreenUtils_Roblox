@@ -7,16 +7,16 @@ This documentation serves as a knowledge base for our package, everything here i
 Now, before we begin, first I'd like to introduce you to our example instance hierarchy tree which will be referred to throughout every API page you'll come across...
 ```
 .
-├─ Workspace           -  Object 1 - ClassName: Workspace
-│  ├─ Camera           -  Object 2 - ClassName: Camera
-│  ├─ Terrain          -  Object 3 - ClassName: Terrain
-│  ├─ SpawnLocation    -  Object 4 - ClassName: SpawnLocation
-│  │  └─ Decal         -  Object 5 - ClassName: Decal
-│  ├─ Part1            -  Object 6 - ClassName: MeshPart
-│  ├─ Part1            -  Object 7 - ClassName: UnionOperation
-│  ├─ Part1            -  Object 8 - ClassName: UnionOperation
-│  ├─ Part1            -  Object 9 - ClassName: UnionOperation
-│  ├─ BasePart         -  Object 10 - ClassName: Part
+├─ Workspace           # Object 1 - ClassName: Workspace
+│  ├─ Camera           # Object 2 - ClassName: Camera
+│  ├─ Terrain          # Object 3 - ClassName: Terrain
+│  ├─ SpawnLocation    # Object 4 - ClassName: SpawnLocation
+│  │  └─ Decal         #  Object 5 - ClassName: Decal
+│  ├─ Part1            #  Object 6 - ClassName: MeshPart
+│  ├─ Part1            #  Object 7 - ClassName: UnionOperation
+│  ├─ Part1            #  Object 8 - ClassName: UnionOperation
+│  ├─ Part1            #  Object 9 - ClassName: UnionOperation
+│  ├─ BasePart         #  Object 10 - ClassName: Part
 │  ├─ Part             -  Object 11 - ClassName: Part
 │  ├─ Part             -  Object 12 - ClassName: Part
 │  ├─ Part1            -  Object 13 - ClassName: Part
