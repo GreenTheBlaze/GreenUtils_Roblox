@@ -53,7 +53,7 @@ Creates multiple instances based on the provided configuration dictionary. Exten
 
 **Parameters:**
 
-* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
+* `instancesConfig`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
 
 **Returns:**
 
@@ -89,17 +89,17 @@ print(yellowPart.Parent.Name) --> Workspace
 ### cloneAndReplaceProperties
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 
-**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesConfig: {[string]: any}) → ...Instance`
+**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesConfig: {[string]: any}) → c`
 
 **Parameters:**
 
-* `cloneInstance`: [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to be cloned.
+* `cloneInstance`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to be cloned.
 
-* `propertiesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned.
+* `propertiesConfig`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned.
 
 **Returns:**
 
-* [`Tuple`](https://create.roblox.com/docs/luau/tuples): The cloned instances.
+* [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance): The cloned instance.
 
 **Code Example:**
 ```lua
