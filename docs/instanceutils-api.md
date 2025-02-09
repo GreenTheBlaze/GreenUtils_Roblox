@@ -3,9 +3,9 @@ Below listed are the methods/functions used in InstanceUtils!
 ## Miscellanious Functions
 
 ### createInstance
-Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className`, similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
+Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className` using the provided configuration dictionary to set the object's properties. Similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
 
-**Syntax:** `InstanceUtils:createInstance(className: string, propertiesTable: {[string}: any) → Instance`
+**Syntax:** `InstanceUtils:createInstance(className: string, propertiesConfig: {[string]: any}) → Instance`
 
 **Parameters:**
 
@@ -25,8 +25,10 @@ local redPart = InstanceUtils:createInstance("Part", {
    Parent = workspace.SpawnLocation
 })
 
--- This works too, however, it's recommended you follow what was done with the redPart as it's more efficient
--- If you're going to use this way, you MUST set the ClassName first before any other properties
+--[[
+   This works too, however, it's recommended you follow what was done with the redPart as it's more efficient
+   If you're going to use this way, you MUST set the ClassName first before any other properties
+]]
 local yellowPart = InstanceUtils:createInstance(nil, {
    ClassName = "Part",
    Name = "YellowPart",
@@ -34,23 +36,24 @@ local yellowPart = InstanceUtils:createInstance(nil, {
    Parent = workspace
 })
 
+-- Example output results of the instances' properties:
 print(typeof(redPart)) --> Instance
-print(typeof(yellowPart)) --> Instance
-
 print(redPart.Parent.Name) --> SpawnLocation
+
+print(typeof(yellowPart)) --> Instance
 print(yellowPart.Parent.Name) --> Workspace
 ```
 
 ----
 
 ### createInstances
-Creates multiple instances based on the provided configuration array. Extended version of [createInstance](#createInstance).
+Creates multiple instances based on the provided configuration dictionary. Extended version of [createInstance](#createInstance). Invalid properties provided will be flagged.
 
 **Syntax:** `InstanceUtils:createInstances(instancesConfig: {{[string]: any}}) → ...Instance`
 
 **Parameters:**
 
-* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays): The configuration array containing each individual object's properties dictionary which will be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
+* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays): The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
 
 **Returns:**
 
@@ -58,26 +61,27 @@ Creates multiple instances based on the provided configuration array. Extended v
 
 **Code Example:**
 ```lua
-local foo, bar = InstanceUtils:createInstances({
+local redPart, yellowPart = InstanceUtils:createInstances({
    {
-      Name = "FooBar",
       ClassName = "Part",
+      Name = "RedPart",
       BrickColor = BrickColor.new(1, 0, 0),
-      Parent = workspace.Camera
+      Parent = workspace.SpawnLocation
    },
    {
-      ClassName = "TextLabel"
-      Name = "ARedMeshPart",
-      ClassName = "MeshPart",
-      Parent = workspace,
-      
+      ClassName = "Part",
+      Name = "YellowPart",
+      BrickColor = BrickColor.new(1, 1, 0),
+      Parent = workspace
    }
 })
 
-print(typeof(fooBar)) --> Instance
-print(typeof(aRedMeshPart)) --> FooBar
+-- Example output results of the instances' properties:
+print(typeof(redPart)) --> Instance
+print(redPart.Parent.Name) --> SpawnLocation
 
-print(fooBar.Name) --> Camera
+print(typeof(yellowPart)) --> Instance
+print(yellowPart.Parent.Name) --> Workspace
 ```
 
 ----
@@ -85,13 +89,13 @@ print(fooBar.Name) --> Camera
 ### cloneAndReplaceProperties
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 
-**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesTable: {[string]: any}) → ...Instance`
+**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesConfig: {[string]: any}) → ...Instance`
 
 **Parameters:**
 
-* `cloneInstance`: [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The configuration array for each individual instance being created.
+* `cloneInstance`: [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to be cloned.
 
-* `propertiesTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration array for each individual instance being created.
+* `propertiesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being created.
 
 **Returns:**
 
@@ -99,31 +103,27 @@ Creates a full copy of the provided `cloneInstance` including all of its descend
 
 **Code Example:**
 ```lua
-local fooBar, aRedMeshPart = InstanceUtils:createInstances({
-   {
-      Name = "FooBar",
-      ClassName = "Part",
-      BrickColor = BrickColor.new(1, 0, 0),
-      Parent = workspace.Camera
-   },
-   {
-      Name = "ARedMeshPart",
-      ClassName = "MeshPart",
-      Parent = workspace
-   }
+local spawnLocation = workspace:FindFirstChild("SpawnLocation")
+
+print(spawnLocation.BrickColor) --> Medium stone grey
+print(spawnLocation.Parent.Name) --> Workspace
+
+-- Creates a clone of spawnLocation
+local spawnLocation2 = InstanceUtils:cloneAndReplaceProperties(spawnLocation, {
+   Name = "SpawnLocation2",
+   BrickColor = BrickColor.new("Really red"),
+   Parent = game.Lighting
 })
 
-print(typeof(fooBar)) --> Instance
-print(typeof(aRedMeshPart)) --> FooBar
-
-print(fooBar.Name) --> Camera
+print(spawnLocation2.BrickColor) --> Really red
+print(spawnLocation2.Parent.Name) --> Lighting
 ```
 
 ----
 
 ### clonesAndReplaceProperties
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
-Creates full copies Instance objects based on the provided configuration array. Extended version of [createInstance](#createInstance).
+Creates full copies Instance objects based on the provided configuration array. Extended version of [cloneAndReplaceProperties](#cloneAndReplaceProperties).
 
 **Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance) → ...Instance`
 
@@ -137,7 +137,10 @@ Creates full copies Instance objects based on the provided configuration array. 
 
 **Code Example:**
 ```lua
-local fooBar, aRedMeshPart = InstanceUtils:createInstances({
+local spawnLocation = workspace:FindFirstChild("SpawnLocation")
+local baseplate = workspace:FindFirstChild("Baseplate")
+
+spawnLocation, baseplate = InstanceUtils:createInstances({
    {
       Name = "FooBar",
       ClassName = "Part",
