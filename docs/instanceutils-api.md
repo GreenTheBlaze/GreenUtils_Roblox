@@ -53,11 +53,11 @@ Creates multiple instances based on the provided configuration dictionary. Exten
 
 **Parameters:**
 
-* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays): The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
+* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
 
 **Returns:**
 
-* [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
+* [`Tuple`](https://create.roblox.com/docs/luau/tuples) - The created instances.
 
 **Code Example:**
 ```lua
@@ -95,11 +95,11 @@ Creates a full copy of the provided `cloneInstance` including all of its descend
 
 * `cloneInstance`: [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to be cloned.
 
-* `propertiesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being created.
+* `propertiesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned.
 
 **Returns:**
 
-* [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
+* [`Tuple`](https://create.roblox.com/docs/luau/tuples): The cloned instances.
 
 **Code Example:**
 ```lua
@@ -140,17 +140,23 @@ Creates full copies Instance objects based on the provided configuration array. 
 local spawnLocation = workspace:FindFirstChild("SpawnLocation")
 local baseplate = workspace:FindFirstChild("Baseplate")
 
-spawnLocation, baseplate = InstanceUtils:createInstances({
+print(spawnLocation.BrickColor) --> Medium stone grey
+print(spawnLocation.Parent.Name) --> Workspace
+
+print(baseplate.BrickColor) --> Medium stone grey
+print(baseplate.Parent.Name) --> Workspace
+
+spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties({
    {
-      Name = "FooBar",
-      ClassName = "Part",
-      BrickColor = BrickColor.new(1, 0, 0),
-      Parent = workspace.Camera
+      cloneInstance = spawnLocation,
+      Name = "SpawnLocation2",
+      BrickColor = BrickColor.new("Really red"),
+      Parent = game.Lighting
    },
    {
-      Name = "ARedMeshPart",
-      ClassName = "MeshPart",
-      Parent = workspace
+      cloneInstance = baseplate,
+      Name = "Baseplate2",
+      Parent = workspace.Terrain
    }
 })
 
