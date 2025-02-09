@@ -5,13 +5,13 @@ Below listed are the methods/functions used in InstanceUtils!
 ### createInstance
 Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className`, similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
 
-**Syntax:** `InstanceUtils:createInstance(className: Instance, propertiesTable: {any}) → Instance`
+**Syntax:** `InstanceUtils:createInstance(className: string, propertiesTable: {[string}: any) → Instance`
 
 **Parameters:**
 
 * `className`: [string](https://create.roblox.com/docs/luau/strings) - Class name of the new object to create.
 
-* `propertiesTable`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The table in which the properties to configure for the new object should be listed.
+* `propertiesConfig`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionary in which the properties to configure for the new object should be listed.
 
 **Returns:**
 
@@ -19,14 +19,26 @@ Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes
 
 **Code Example:**
 ```lua
-local newCoolBlock = InstanceUtils:createInstance("Part", {
-   Name = "NewCoolBlock",
+local redPart = InstanceUtils:createInstance("Part", {
+   Name = "RedPart",
    BrickColor = BrickColor.new(1, 0, 0),
-   Parent = workspace.Camera
+   Parent = workspace.SpawnLocation
 })
 
-print(typeof(newCoolBlock)) --> Instance
-print(newCoolBlock.Parent.Name) --> Camera
+-- This works too, however, it's recommended you follow what was done with the redPart as it's more efficient
+-- If you're going to use this way, you MUST set the ClassName first before any other properties
+local yellowPart = InstanceUtils:createInstance(nil, {
+   ClassName = "Part",
+   Name = "YellowPart",
+   BrickColor = BrickColor.new(1, 1, 0),
+   Parent = workspace
+})
+
+print(typeof(redPart)) --> Instance
+print(typeof(yellowPart)) --> Instance
+
+print(redPart.Parent.Name) --> SpawnLocation
+print(yellowPart.Parent.Name) --> Workspace
 ```
 
 ----
@@ -34,11 +46,11 @@ print(newCoolBlock.Parent.Name) --> Camera
 ### createInstances
 Creates multiple instances based on the provided configuration array. Extended version of [createInstance](#createInstance).
 
-**Syntax:** `InstanceUtils:createInstances(instancesConfig: {{any}}) → ...Instance`
+**Syntax:** `InstanceUtils:createInstances(instancesConfig: {{[string]: any}}) → ...Instance`
 
 **Parameters:**
 
-* `instancesConfig: []`: The configuration array for each individual instance being created.
+* `instancesConfig`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays): The configuration array containing each individual object's properties dictionary which will be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
 
 **Returns:**
 
@@ -46,7 +58,7 @@ Creates multiple instances based on the provided configuration array. Extended v
 
 **Code Example:**
 ```lua
-local fooBar, aRedMeshPart = InstanceUtils:createInstances({
+local foo, bar = InstanceUtils:createInstances({
    {
       Name = "FooBar",
       ClassName = "Part",
@@ -54,9 +66,11 @@ local fooBar, aRedMeshPart = InstanceUtils:createInstances({
       Parent = workspace.Camera
    },
    {
+      ClassName = "TextLabel"
       Name = "ARedMeshPart",
       ClassName = "MeshPart",
-      Parent = workspace
+      Parent = workspace,
+      
    }
 })
 
