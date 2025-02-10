@@ -3,7 +3,7 @@ Below listed are the methods/functions used in InstanceUtils!
 ## Miscellanious Functions
 
 ### createInstance
-Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className` using the provided configuration dictionary to set the object's properties. Similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
+Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className` using the provided `propertyTable` to set the object's properties. Similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
 
 **Syntax:** `InstanceUtils:createInstance(className: string, propertyTable: {[string]: any}) → Instance`
 
