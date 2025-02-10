@@ -169,11 +169,11 @@ local spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties(
 )
 
 -- Here we can see the new changes in the properties.
-print(spawnLocation2.BrickColor) --> Medium stone grey
-print(spawnLocation2.Parent.Name) --> Workspace
+print(spawnLocation2.Name) --> SpawnLocation2
+print(spawnLocation2.Parent.Name) --> Lighting
 
-print(baseplate2.BrickColor) --> Medium stone grey
-print(baseplate2.Parent.Name) --> Workspace
+print(baseplate2.Name) --> Baseplate2
+print(baseplate2.Parent.Name) --> Terrain
 ```
 
 ----
@@ -182,37 +182,37 @@ print(baseplate2.Parent.Name) --> Workspace
 This method extension focusses mainly on retrieving instances and outputting them in the form of an [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) array. Exceptions to this include the getting instances from path methods.
 
 ### getSiblings
-Returns an array (a numerically indexed table) containing all direct siblings of the given `targetObject`. In other words, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) that shares the same [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent) as the `targetObject`.
+Returns an array (a numerically indexed table) containing all direct siblings of the given `searchObject`. In other words, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) that shares the same [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent) as the `searchObject`.
 
-**Syntax:** `InstanceUtils:getSiblings(targetObject: Instance) → {Instance}`
+**Syntax:** `InstanceUtils:getSiblings(searchObject: Instance) → {Instance}`
 
 **Parameters:**
 
-* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the siblings are going to be retrieved from.
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the siblings are going to be fetched from.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `targetObject`'s siblings.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s siblings.
 
 **Code Example:**
 ```lua
-local siblingsOfSky = InstanceUtils:getSiblings(game.Lighting.PointLight1) --> {Object 30, Object 31, Object 32}
+local siblingsOfPointLight1 = InstanceUtils:getSiblings(game.Lighting.PointLight1) --> {Object 30, Object 31, Object 32}
 ```
 
 ----
 
 ### getAncestors
-Returns an array containing all ancestors of the given `targetObject`. Specifically, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) in the hierarchy above the `targetObject` starting from its immediate [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent), working up towards the [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel).
+Returns an array containing all ancestors of the given `searchObject`. Specifically, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) in the hierarchy above the `searchObject` starting from its immediate [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent), working up towards the [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel).
 
-**Syntax:** `InstanceUtils:getAncestors(targetObject: Instance) → {Instance}`
+**Syntax:** `InstanceUtils:getAncestors(searchObject: Instance) → {Instance}`
 
 **Parameters:**
 
-* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the ancestors are going to be retrieved from.
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the ancestors are going to be fetched from.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `targetObject`'s ancestors.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s ancestors.
 
 **Code Example:**
 ```lua
@@ -223,43 +223,44 @@ local ancestorsOfBar = InstanceUtils:getAncestors(workspace.Part1.FooGui.TextLab
 ----
 
 ### getChildrenOfName
-Returns an array containing all children of the given `parent` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+Returns an array containing all children of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
 
-**Syntax:** `InstanceUtils:getChildrenOfName(targetObject: Instance, name: string) → {Instance}`
+**Syntax:** `InstanceUtils:getChildrenOfName(searchObject: Instance, name: string) → {Instance}`
 
 **Parameters:**
 
-* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the children are going to be retrieved from.
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the children are going to be fetched from.
 
-* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) to be looked for.
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the children to be compared to.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `parent`'s children.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s children.
 
 **Code Example:**
 ```lua
-local childrenOfCamera2 = InstanceUtils:getChildrenOfName(workspace.Camera2, "FakeThing1") --> {workspace.Camera2.FakeThing1, workspace.Camera2.FakeThing1, workspace.Camera2.FakeThing1}
+local childrenOfLighting = InstanceUtils:getChildrenOfName(game.Lighting, "PointLight") --> {Object 31, Object 32}
 
-print("Name is '" .. childrenOfCamera2[1].Name .. "' and ClassName is '" .. childrenOfCamera2[1].ClassName .. "'") --> Name is 'FakeThing1' and ClassName is 'Camera'
-print("Name is '" .. childrenOfCamera2[2].Name .. "' and ClassName is '" .. childrenOfCamera2[2].ClassName .. "'") --> Name is 'FakeThing1' and ClassName is 'Part'
-print("Name is '" .. childrenOfCamera2[3].Name .. "' and ClassName is '" .. childrenOfCamera2[3].ClassName .. "'") --> Name is 'FakeThing1' and ClassName is 'Part'
+print("Name is '" .. childrenOfLighting[1].Name .. "' and ClassName is '" .. childrenOfCamera2[1].ClassName .. "'") --> Name is 'PointLight' and ClassName is 'PointLight'
+print("Name is '" .. childrenOfLighting[2].Name .. "' and ClassName is '" .. childrenOfCamera2[2].ClassName .. "'") --> Name is 'PointLight' and ClassName is 'Part'
 ```
 
 ----
 
 ### getSiblingsOfName
-Returns an array containing all siblings of the given `parent` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+Returns an array containing all siblings of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
 
-**Syntax:** `InstanceUtils:getSiblingsOfName(child: Instance, name: string) → {Instance}`
+**Syntax:** `InstanceUtils:getSiblingsOfName(searchObject: Instance, name: string) → {Instance}`
 
 **Parameters:**
 
-* `sibling`: The instance to whom the siblings are going to be searched from.
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the siblings are going to be fetched from.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the siblings to be compared to.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `sibling`'s siblings.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s siblings.
 
 **Code Example:**
 ```lua
