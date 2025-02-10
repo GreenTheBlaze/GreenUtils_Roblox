@@ -87,10 +87,102 @@ print(yellowPart.Parent.Name) --> Workspace
 
 ----
 
-### cloneAndReplaceProperties
+### setInstanceProperties
+Sets an existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
+
+**Syntax:** `InstanceUtils:setInstanceProperties(targetInstance: Instance, propertyTable: {[string]: any}) → ()`
+
+**Parameters:**
+
+* `targetInstance`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object that's to have its properties changed.
+
+**Returns:**
+
+* `void`
+
+**Code Example:**
+```lua
+-- Use the createInstance method to make an example object.
+local foo = InstanceUtils:createInstance("Part", {
+   Name = "Foo",
+   Parent = workspace
+})
+
+-- Output an example property, in this case the parent's Name to see the value
+-- before setting.
+print(foo.Parent.Name) --> Workspace
+
+InstanceUtils:setInstanceProperties(foo, {
+   Parent = game.Lighting
+})
+
+-- Output the property after setting change so we can confirm that it has been
+-- changed correctly.
+print(foo.Parent.Name) --> Lighting
+```
+
+----
+
+### setInstancesProperties
+Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)s' properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
+
+**Syntax:** `InstanceUtils:setInstancesProperties(...: {[string]: any}) → ()`
+
+**Parameters:**
+
+* `instanceConfigTables...`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionaries for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) that is to have their properties changed, which must contain a `cloneInstance` entry and a `propertyTable` entry.
+
+**Returns:**
+
+* `void`
+
+**Code Example:**
+```lua
+-- Use the createInstance method to make an example object.
+
+local foo, bar = InstanceUtils:createInstances(
+   {
+      ClassName = "Part",
+      Name = "Foo",
+      Parent = workspace
+   },
+   {
+      ClassName = "Part",
+      Name = "Bar",
+      Parent = game.Lighting
+   }
+)
+
+-- Output an example property(s) from each instance, to see the value before
+-- setting.
+print(foo.Name) --> Foo
+print(bar.Name) --> Bar
+
+InstanceUtils:setInstancesProperties(
+   {
+      targetInstance = foo,
+      propertyTable: {
+         Name = "FooBar"
+      }
+   },
+   {
+      targetInstance = bar,
+      propertyTable: {
+         Name = "BarFoo"
+      }
+   }
+)
+
+print(foo.Name) --> FooBar
+print(bar.Name) --> BarFoo
+```
+
+----
+
+### cloneAnd
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 
-**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertyTable: {[string]: any}) → Instance`
+**Syntax:** `InstanceUtils:cloneAndSetProperties(cloneInstance: Instance, propertyTable: {[string]: any}) → Instance`
 
 **Parameters:**
 
@@ -110,7 +202,7 @@ local spawnLocation = workspace:FindFirstChild("SpawnLocation")
 print(spawnLocation.BrickColor) --> Medium stone grey
 print(spawnLocation.Parent.Name) --> Workspace
 
-local spawnLocation2 = InstanceUtils:cloneAndReplaceProperties(spawnLocation, {
+local spawnLocation2 = InstanceUtils:cloneAndSetProperties(spawnLocation, {
    Name = "SpawnLocation2",
    BrickColor = BrickColor.new("Really red"),
    Parent = game.Lighting
@@ -123,11 +215,10 @@ print(spawnLocation2.Parent.Name) --> Lighting
 
 ----
 
-### clonesAndReplaceProperties
-Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
-Creates full copies Instance objects based on the provided configuration array. Extended version of [cloneAndReplaceProperties](#cloneAndReplaceProperties).
+### clonesAndSetProperties
+Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable). Extended version of [cloneAndSetProperties](#cloneAndSetProperties).
 
-**Syntax:** `InstanceUtils:clonesAndReplaceProperties(...: {[string]: any}) → ...Instance`
+**Syntax:** `InstanceUtils:clonesAndSetProperties(...: {[string]: any}) → ...Instance`
 
 **Parameters:**
 
@@ -150,7 +241,7 @@ print(spawnLocation.Parent.Name) --> Workspace
 print(baseplate.BrickColor) --> Medium stone grey
 print(baseplate.Parent.Name) --> Workspace
 
-local spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties(
+local spawnLocation2, baseplate2 = InstanceUtils:clonesAndSetProperties(
    {
       cloneInstance = spawnLocation,
       propertyTable = {
