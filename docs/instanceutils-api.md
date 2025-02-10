@@ -37,6 +37,44 @@ local yellowPart = InstanceUtils:createInstance(nil, {
    Parent = workspace
 })
 
+--[[
+   Here, you can create children too within the method if you wanted to save
+   lines of space within programs, however these will not be returned.
+
+   This is the example tree structure that was created here:
+   GreenPart
+   ├─ Baz
+   │  ├─ Garb
+   │  └─ Jarp
+   └─ Bazifyer
+]]
+-- 
+local greenPart = InstanceUtils:createInstance("Part", {
+   Name = "GreenPart",
+   BrickColor = BrickColor.new(0, 1, 0),
+   Parent = workspace.SpawnLocation,
+   Children = {
+      {
+         ClassName = "SurfaceGui",
+         Name = "Baz",
+         Children = {
+            {
+               ClassName = "TextLabel",
+               Name = "Garb"
+            },
+            {
+               ClassName = "TextBox",
+               Name = "Jarp"
+            }
+         }
+      },
+      {
+         ClassName = "UIGradient",
+         Name = "Bazifyer"
+      }
+   }
+})
+
 -- Used to show the properties of created objects.
 print(typeof(redPart)) --> Instance
 print(redPart.Parent.Name) --> SpawnLocation
@@ -363,4 +401,34 @@ for _, sibling in siblingsOfASimpleTruss do
    --> Part2
    --> Part2
    --> Part2
+```
+
+----
+
+### getDescendantsOfName
+Returns an array containing all descendants of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+
+**Syntax:** `InstanceUtils:getDescendantsOfName(searchObject: Instance, name: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the descendants are going to be fetched from.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the descendants to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s descendants.
+
+**Code Example:**
+```lua
+
+local foo, bar, jarp, baz = InstanceUtils:createInstances(
+   {
+   },
+   {
+   }
+)
+
+local descendantsOfLightning = InstanceUtils:getDescendantsOfName(game.Lighting, "PointLight") --> {Object 31, Object 32}
 ```
