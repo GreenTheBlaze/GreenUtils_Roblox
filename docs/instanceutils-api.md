@@ -423,13 +423,96 @@ Returns an array containing all descendants of the given `searchObject` of which
 
 **Code Example:**
 ```lua
+-- Confirm there are no instances named "Jarp" beforehand so we can confirm this
+-- works.
+local descendantsOfLightning = InstanceUtils:getDescendantsOfName(game.ReplicatedStorage, "Jarp") --> {}
 
-local foo, bar, jarp, baz = InstanceUtils:createInstances(
+local jarp, baz = InstanceUtils:createInstances(
    {
+      ClassName = "SurfaceGui",
+      Name = "Jarp",
+      Parent = game.ReplicatedStorage
+      Children = {
+         {
+            ClassName = "TextLabel",
+            Name = "Jarp"
+         }
+      }
    },
    {
+      ClassName = "SurfaceGui",
+      Name = "Frobulator",
+      Parent = game.ReplicatedStorage
    }
 )
 
-local descendantsOfLightning = InstanceUtils:getDescendantsOfName(game.Lighting, "PointLight") --> {Object 31, Object 32}
+descendantsOfLightning = InstanceUtils:getDescendantsOfName(game.ReplicatedStorage, "Jarp") --> {game.ReplicatedStorage.Jarp, game.ReplicatedStorage.Jarp.Jarp}
 ```
+
+----
+
+### getAncestorsOfName
+Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfName(searchObject: Instance, name: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the ancestors are going to be fetched from.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the ancestors to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s ancestors.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getAncestorsOfName
+Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfName(searchObject: Instance, name: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the ancestors are going to be fetched from.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the ancestors to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s ancestors.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getChildrenOfNamesRange
+Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfName(searchObject: Instance, name: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the ancestors are going to be fetched from.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the ancestors to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s ancestors.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
