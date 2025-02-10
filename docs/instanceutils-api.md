@@ -26,8 +26,9 @@ local redPart = InstanceUtils:createInstance("Part", {
 })
 
 --[[
-   This works too, however, it's recommended you follow what was done with the redPart as it's more efficient.
-   If you're going to use this way, you MUST set the ClassName first before any other properties!
+   This works too, however, it's recommended you follow what was done with the
+   redPart as it's more efficient. If you're going to use this way, you MUST
+   set the ClassName first before any other properties!
 ]]
 local yellowPart = InstanceUtils:createInstance(nil, {
    ClassName = "Part",
@@ -141,7 +142,8 @@ Creates full copies Instance objects based on the provided configuration array. 
 local spawnLocation = workspace:FindFirstChild("SpawnLocation")
 local baseplate = workspace:FindFirstChild("Baseplate")
 
--- Shows the properties of the original instances so we can compare them to after cloning.
+-- Shows the properties of the original instances so we can compare them
+-- to after cloning.
 print(spawnLocation.BrickColor) --> Medium stone grey
 print(spawnLocation.Parent.Name) --> Workspace
 
