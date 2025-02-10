@@ -88,7 +88,7 @@ print(yellowPart.Parent.Name) --> Workspace
 ----
 
 ### setInstanceProperties
-Sets an existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
+Sets an existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution termination.
 
 **Syntax:** `InstanceUtils:setInstanceProperties(targetInstance: Instance, propertyTable: {[string]: any}) → ()`
 
@@ -124,7 +124,7 @@ print(foo.Parent.Name) --> Lighting
 ----
 
 ### setInstancesProperties
-Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
+Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided. Any invalid parameters will result in program execution termination.
 
 **Syntax:** `InstanceUtils:setInstancesProperties(...: {[string]: any}) → ()`
 
@@ -138,8 +138,7 @@ Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes
 
 **Code Example:**
 ```lua
--- Use the createInstance method to make an example object.
-
+-- Use the createInstances method to make the example objects.
 local foo, bar = InstanceUtils:createInstances(
    {
       ClassName = "Part",
@@ -179,7 +178,7 @@ print(bar.Name) --> BarFoo
 
 ----
 
-### cloneAnd
+### cloneAndSetProperties
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 
 **Syntax:** `InstanceUtils:cloneAndSetProperties(cloneInstance: Instance, propertyTable: {[string]: any}) → Instance`
@@ -222,7 +221,7 @@ Creates a full copy of the provided `cloneInstance` including all of its descend
 
 **Parameters:**
 
-* `cloneConfigTables...`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionaries for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned, which must contain a `cloneInstance` entry and a `propertyTable` entry.
+* `cloneConfigTables...`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionaries for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned, which must contain both a `cloneInstance` entry and a `propertyTable` entry in each dictionary to be validated.
 
 **Returns:**
 
