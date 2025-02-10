@@ -5,13 +5,13 @@ Below listed are the methods/functions used in InstanceUtils!
 ### createInstance
 Creates a new [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) of type `className` using the provided configuration dictionary to set the object's properties. Similar to the default constructor [Instance.new](https://create.roblox.com/docs/reference/engine/datatypes/Instance#new) which is already provided by Roblox.
 
-**Syntax:** `InstanceUtils:createInstance(className: string, propertiesConfig: {[string]: any}) → Instance`
+**Syntax:** `InstanceUtils:createInstance(className: string, propertyTable: {[string]: any}) → Instance`
 
 **Parameters:**
 
 * `className`: [string](https://create.roblox.com/docs/luau/strings) - Class name of the new object to create.
 
-* `propertiesConfig`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionary in which the properties to configure for the new object should be listed.
+* `propertyTable`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionary in which the properties to configure for the new object should be listed.
 
 **Returns:**
 
@@ -49,11 +49,11 @@ print(yellowPart.Parent.Name) --> Workspace
 ### createInstances
 Creates multiple instances based on the provided configuration dictionary. Extended version of [createInstance](#createInstance). Invalid properties provided will be flagged.
 
-**Syntax:** `InstanceUtils:createInstances(instancesConfig: {{[string]: any}}) → ...Instance`
+**Syntax:** `InstanceUtils:createInstances(...: {[string]: any}) → ...Instance`
 
 **Parameters:**
 
-* `instancesConfig`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The array containing each individual object's properties configuration dictionary, which will each be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s).
+* `propertyTables...`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The dictionaries containing each individual object's property settings, which will be used to create the intended [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)(s) correctly.
 
 **Returns:**
 
@@ -61,7 +61,7 @@ Creates multiple instances based on the provided configuration dictionary. Exten
 
 **Code Example:**
 ```lua
-local redPart, yellowPart = InstanceUtils:createInstances({
+local redPart, yellowPart = InstanceUtils:createInstances(
    {
       ClassName = "Part",
       Name = "RedPart",
@@ -74,7 +74,7 @@ local redPart, yellowPart = InstanceUtils:createInstances({
       BrickColor = BrickColor.new(1, 1, 0),
       Parent = workspace
    }
-})
+)
 
 -- Example output results of the instances' properties:
 print(typeof(redPart)) --> Instance
@@ -89,17 +89,17 @@ print(yellowPart.Parent.Name) --> Workspace
 ### cloneAndReplaceProperties
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 
-**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertiesConfig: {[string]: any}) → c`
+**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance, propertyTable: {[string]: any}) → Instance`
 
 **Parameters:**
 
 * `cloneInstance`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to be cloned.
 
-* `propertiesConfig`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The configuration dictionary for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned.
+* `propertyTable`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration table for the properties of each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned.
 
 **Returns:**
 
-* [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance): The cloned instance.
+* [`Instance`](https://create.roblox.com/docs/reference/engine/classes/Instance) - The cloned object.
 
 **Code Example:**
 ```lua
@@ -125,15 +125,15 @@ print(spawnLocation2.Parent.Name) --> Lighting
 Creates a full copy of the provided `cloneInstance` including all of its descendants, ignoring all instances that are not [Archivable](https://create.roblox.com/docs/reference/engine/classes/Instance#Archivable).
 Creates full copies Instance objects based on the provided configuration array. Extended version of [cloneAndReplaceProperties](#cloneAndReplaceProperties).
 
-**Syntax:** `InstanceUtils:cloneAndReplaceProperties(cloneInstance: Instance) → ...Instance`
+**Syntax:** `InstanceUtils:clonesAndReplaceProperties(...: {[string]: any}) → ...Instance`
 
 **Parameters:**
 
-* `instancesConfig:` [`Array`](https://create.roblox.com/docs/luau/tables#arrays)`: The configuration array for each individual instance being created.
+* `cloneConfigTables...`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - The configuration dictionaries for each individual [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) being cloned, which must contain a `cloneInstance` entry and a `propertyTable` entry.
 
 **Returns:**
 
-* [`Tuple`](https://create.roblox.com/docs/luau/tuples): The created instances.
+* [`Tuple`](https://create.roblox.com/docs/luau/tuples) - The created instances.
 
 **Code Example:**
 ```lua
@@ -146,19 +146,23 @@ print(spawnLocation.Parent.Name) --> Workspace
 print(baseplate.BrickColor) --> Medium stone grey
 print(baseplate.Parent.Name) --> Workspace
 
-spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties({
+local spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties(
    {
       cloneInstance = spawnLocation,
-      Name = "SpawnLocation2",
-      BrickColor = BrickColor.new("Really red"),
-      Parent = game.Lighting
+      propertyTable = {
+         Name = "SpawnLocation2",
+         BrickColor = BrickColor.new("Really red"),
+         Parent = game.Lighting
+      }
    },
    {
       cloneInstance = baseplate,
-      Name = "Baseplate2",
-      Parent = workspace.Terrain
+      propertyTable = {
+         Name = "Baseplate2",
+         Parent = workspace.Terrain
+      }
    }
-})
+)
 
 print(typeof(fooBar)) --> Instance
 print(typeof(aRedMeshPart)) --> FooBar
