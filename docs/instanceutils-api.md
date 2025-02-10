@@ -42,6 +42,7 @@ local yellowPart = InstanceUtils:createInstance(nil, {
    lines of space within programs, however these will not be returned.
 
    This is the example tree structure that was created here:
+
    GreenPart
    ├─ Baz
    │  ├─ Garb
