@@ -124,7 +124,7 @@ print(foo.Parent.Name) --> Lighting
 ----
 
 ### setInstancesProperties
-Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)s' properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
+Sets existing [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance)'s properties to the specified values provided in the `propertyTable`. Any invalid parameters will result in program execution terminating.
 
 **Syntax:** `InstanceUtils:setInstancesProperties(...: {[string]: any}) → ()`
 
