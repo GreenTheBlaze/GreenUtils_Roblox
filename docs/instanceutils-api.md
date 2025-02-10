@@ -26,8 +26,8 @@ local redPart = InstanceUtils:createInstance("Part", {
 })
 
 --[[
-   This works too, however, it's recommended you follow what was done with the redPart as it's more efficient
-   If you're going to use this way, you MUST set the ClassName first before any other properties
+   This works too, however, it's recommended you follow what was done with the redPart as it's more efficient.
+   If you're going to use this way, you MUST set the ClassName first before any other properties!
 ]]
 local yellowPart = InstanceUtils:createInstance(nil, {
    ClassName = "Part",
@@ -36,7 +36,7 @@ local yellowPart = InstanceUtils:createInstance(nil, {
    Parent = workspace
 })
 
--- Example output results of the instances' properties:
+-- Used to show the properties of created objects.
 print(typeof(redPart)) --> Instance
 print(redPart.Parent.Name) --> SpawnLocation
 
@@ -76,7 +76,7 @@ local redPart, yellowPart = InstanceUtils:createInstances(
    }
 )
 
--- Example output results of the instances' properties:
+-- Used to show the properties of the created instances.
 print(typeof(redPart)) --> Instance
 print(redPart.Parent.Name) --> SpawnLocation
 
@@ -105,16 +105,17 @@ Creates a full copy of the provided `cloneInstance` including all of its descend
 ```lua
 local spawnLocation = workspace:FindFirstChild("SpawnLocation")
 
+-- Used to show the properties of the original instances before they are cloned.
 print(spawnLocation.BrickColor) --> Medium stone grey
 print(spawnLocation.Parent.Name) --> Workspace
 
--- Creates a clone of spawnLocation
 local spawnLocation2 = InstanceUtils:cloneAndReplaceProperties(spawnLocation, {
    Name = "SpawnLocation2",
    BrickColor = BrickColor.new("Really red"),
    Parent = game.Lighting
 })
 
+-- Used to show the changes in properties of the newly cloned instances.
 print(spawnLocation2.BrickColor) --> Really red
 print(spawnLocation2.Parent.Name) --> Lighting
 ```
@@ -140,6 +141,7 @@ Creates full copies Instance objects based on the provided configuration array. 
 local spawnLocation = workspace:FindFirstChild("SpawnLocation")
 local baseplate = workspace:FindFirstChild("Baseplate")
 
+-- Shows the properties of the original instances so we can compare them to after cloning.
 print(spawnLocation.BrickColor) --> Medium stone grey
 print(spawnLocation.Parent.Name) --> Workspace
 
@@ -164,67 +166,70 @@ local spawnLocation2, baseplate2 = InstanceUtils:clonesAndReplaceProperties(
    }
 )
 
-print(typeof(fooBar)) --> Instance
-print(typeof(aRedMeshPart)) --> FooBar
+-- Here we can see the new changes in the properties.
+print(spawnLocation2.BrickColor) --> Medium stone grey
+print(spawnLocation2.Parent.Name) --> Workspace
 
-print(fooBar.Name) --> Camera
+print(baseplate2.BrickColor) --> Medium stone grey
+print(baseplate2.Parent.Name) --> Workspace
 ```
 
 ----
 
 ## Get
-This method extension focusses mainly on retrieving instances and outputting them in the form of an `Instance` array. Exceptions to this include the getting instances from path methods.
+This method extension focusses mainly on retrieving instances and outputting them in the form of an [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) array. Exceptions to this include the getting instances from path methods.
 
 ### getSiblings
-Returns an array (a numerically indexed table) containing all direct siblings of the given `child`. In other words, it retrieves every `Instance` that shares the same `Parent` as the `child`.
+Returns an array (a numerically indexed table) containing all direct siblings of the given `targetObject`. In other words, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) that shares the same [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent) as the `targetObject`.
 
-**Syntax:** `InstanceUtils:getSiblings(child: Instance) → {Instance}`
+**Syntax:** `InstanceUtils:getSiblings(targetObject: Instance) → {Instance}`
 
 **Parameters:**
 
-* `child`: The instance to whom the siblings are going to be searched from.
+* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the siblings are going to be retrieved from.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `child`'s siblings.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `targetObject`'s siblings.
 
 **Code Example:**
 ```lua
-local siblingsOfSky = InstanceUtils:getSiblings(game.Lighting.Sky) --> {game.Lighting.ANormalLight, game.Lighting.ANormalLightLol}
+local siblingsOfSky = InstanceUtils:getSiblings(game.Lighting.PointLight1) --> {Object 30, Object 31, Object 32}
 ```
 
 ----
 
 ### getAncestors
-Returns an array containing all ancestors of the given `descendant`. Specifically, it retrieves every `Instance` in the hierarchy above the `descendant`, starting from its immediate `Parent`, working up towards the `DataModel`.
+Returns an array containing all ancestors of the given `targetObject`. Specifically, it retrieves every [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) in the hierarchy above the `targetObject` starting from its immediate [Parent](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Parent), working up towards the [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel).
 
-**Syntax:** `InstanceUtils:getAncestors(descendant: Instance) → {Instance}`
+**Syntax:** `InstanceUtils:getAncestors(targetObject: Instance) → {Instance}`
 
 **Parameters:**
 
-* `descendant`: The instance to whom the ancestors are going to be searched from.
+* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the ancestors are going to be retrieved from.
 
 **Returns:**
 
-* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `descendant`'s ancestors.
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays): An array containing the `targetObject`'s ancestors.
 
 **Code Example:**
 ```lua
-local ancestorsOfBar = InstanceUtils:getSiblings(workspace.Camera2.SomethingElse.Bar) --> {workspace.Camera2.SomethingElse, workspace.Camera2, workspace, game}
+-- Note that it's retrieving ancestors from Object 20 here.
+local ancestorsOfBar = InstanceUtils:getAncestors(workspace.Part1.FooGui.TextLabel) --> {Object 19, Object 18, Object 1, DataModel}
 ```
 
 ----
 
 ### getChildrenOfName
-Returns an array containing all children of the given `parent` of which their `Object.Name` properties are equal to the given `name`.
+Returns an array containing all children of the given `parent` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
 
-**Syntax:** `InstanceUtils:getChildrenOfName(parent: Instance, name: string) → {Instance}`
+**Syntax:** `InstanceUtils:getChildrenOfName(targetObject: Instance, name: string) → {Instance}`
 
 **Parameters:**
 
-* `parent`: The instance to whom the children are going to be searched from.
+* `targetObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the children are going to be retrieved from.
 
-* `name`: The `Object.Name` to be looked for.
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) to be looked for.
 
 **Returns:**
 
@@ -242,7 +247,7 @@ print("Name is '" .. childrenOfCamera2[3].Name .. "' and ClassName is '" .. chil
 ----
 
 ### getSiblingsOfName
-Returns an array containing all siblings of the given `parent` of which their `Object.Name` properties are equal to the given `name`.
+Returns an array containing all siblings of the given `parent` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
 
 **Syntax:** `InstanceUtils:getSiblingsOfName(child: Instance, name: string) → {Instance}`
 
