@@ -473,16 +473,82 @@ Returns an array containing all ancestors of the given `searchObject` of which t
 
 ----
 
-### getAncestorsOfName
-Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+### getChildrenOfNamesRange
+Returns an array containing all children of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `namesRangeTable`.
 
-**Syntax:** `InstanceUtils:getAncestorsOfName(searchObject: Instance, name: string) → {Instance}`
+**Syntax:** `InstanceUtils:getChildrenOfNamesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the children are going to be fetched from.
+
+* `namesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name)s of the children to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s children.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getSiblingsOfNamesRange
+Returns an array containing all siblings of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `namesRangeTable`.
+
+**Syntax:** `InstanceUtils:getChildrenOfNamesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the siblings are going to be fetched from.
+
+* `namesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name)s of the siblings to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s siblings.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getDescendantsOfNamesRange
+Returns an array containing all descendants of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `namesRangeTable`.
+
+**Syntax:** `InstanceUtils:getDescendantsOfNamesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the descendants are going to be fetched from.
+
+* `namesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name)s of the descendants to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s descendants.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getAncestorsOfNamesRange
+Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `namesRangeTable`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfNamesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
 
 **Parameters:**
 
 * `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the ancestors are going to be fetched from.
 
-* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the ancestors to be compared to.
+* `namesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name)s of the ancestors to be compared to.
 
 **Returns:**
 
@@ -495,16 +561,173 @@ Returns an array containing all ancestors of the given `searchObject` of which t
 
 ----
 
-### getChildrenOfNamesRange
-Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to the given `name`.
+### getChildrenOfClass
+Returns an array containing all children of the given `searchObject` of which their [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) properties are equal to the given `className`.
 
-**Syntax:** `InstanceUtils:getAncestorsOfName(searchObject: Instance, name: string) → {Instance}`
+**Syntax:** `InstanceUtils:getChildrenOfClass(searchObject: Instance, className: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the children are going to be fetched from.
+
+* `className`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) of the children to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s children.
+
+**Code Example:**
+```lua
+local childrenOfLighting = InstanceUtils:getChildrenOfClass(game.Lighting, "Part") --> {Object 32, Object 33}
+
+print("Name is '" .. childrenOfLighting[1].Name .. "' and ClassName is '" .. childrenOfCamera2[1].ClassName .. "'") --> Name is 'PointLight' and ClassName is 'Part'
+print("Name is '" .. childrenOfLighting[2].Name .. "' and ClassName is '" .. childrenOfCamera2[2].ClassName .. "'") --> Name is 'PointLight1' and ClassName is 'Part'
+```
+
+----
+
+### getSiblingsOfClass
+Returns an array containing all siblings of the given `searchObject` of which their [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) properties are equal to the given `className`.
+
+**Syntax:** `InstanceUtils:getSiblingsOfClass(searchObject: Instance, className: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the siblings are going to be fetched from.
+
+* `className`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) of the siblings to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s siblings.
+
+**Code Example:**
+```lua
+-- TODO: Make this
+```
+
+----
+
+### getDescendantsOfClass
+Returns an array containing all descendants of the given `searchObject` of which their [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) properties are equal to the given `className`.
+
+**Syntax:** `InstanceUtils:getDescendantsOfClass(searchObject: Instance, className: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the descendants are going to be fetched from.
+
+* `className`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) of the descendants to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s descendants.
+
+**Code Example:**
+```lua
+-- TODO: Make this
+```
+
+----
+
+### getAncestorsOfClass
+Returns an array containing all ancestors of the given `searchObject` of which their [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) properties are equal to the given `className`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfClass(searchObject: Instance, className: string) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The object to whom the ancestors are going to be fetched from.
+
+* `className`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) of the ancestors to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s ancestors.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getChildrenOfClassesRange
+Returns an array containing all children of the given `searchObject` of which their [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) properties are equal to any of values in `classNamesRangeTable`.
+
+**Syntax:** `InstanceUtils:getChildrenOfClassesRange(searchObject: Instance, classNamesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the children are going to be fetched from.
+
+* `classNamesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName)s of the children to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s children.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getSiblingsOfClassesRange
+Returns an array containing all siblings of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `classNamesRangeTable`.
+
+**Syntax:** `InstanceUtils:getSiblingsOfClassesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the siblings are going to be fetched from.
+
+* `classNamesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName)s of the siblings to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s siblings.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getDescendantsOfClassesRange
+Returns an array containing all descendants of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `classNamesRangeTable`.
+
+**Syntax:** `InstanceUtils:getDescendantsOfClassesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the descendants are going to be fetched from.
+
+* `classNamesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName)s of the descendants to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the `searchObject`'s descendants.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getAncestorsOfClassesRange
+Returns an array containing all ancestors of the given `searchObject` of which their [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) properties are equal to any of values in `classNamesRangeTable`.
+
+**Syntax:** `InstanceUtils:getAncestorsOfClassesRange(searchObject: Instance, namesRangeTable: {string}) → {Instance}`
 
 **Parameters:**
 
 * `searchObject`: [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) - The instance to whom the ancestors are going to be fetched from.
 
-* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the ancestors to be compared to.
+* `classNamesRangeTable`: [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName)s of the ancestors to be compared to.
 
 **Returns:**
 
