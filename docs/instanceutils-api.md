@@ -1107,3 +1107,123 @@ Returns an array containing all ancestors of the given `searchObject` of which t
 ```
 
 ----
+
+### getInstancesFromTable
+Add desc
+
+**Syntax:** `InstanceUtils:getInstancesFromTable(searchTable: {any}) → {Instance}`
+
+**Parameters:**
+
+* `searchTable`: [table](https://create.roblox.com/docs/luau/tables) - The table of values that will be checked through to retrieve the [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) objects present in the table.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the found instances.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getInstancesOfNameFromTable
+Add desc
+
+**Syntax:** `InstanceUtils:getInstancesOfNameFromTable(searchTable: {any}, name: string) → {Instance}`
+
+**Parameters:**
+
+* `searchTable`: [table](https://create.roblox.com/docs/luau/tables) - The table of values that will be checked through to retrieve the [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) objects present in the table that match the given `name`.
+
+* `name`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) of the found instances to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the found instances.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getInstancesOfNameRangeFromTable
+Add desc
+
+**Syntax:** `InstanceUtils:getInstancesOfNameRangeFromTable(searchTable: {any}, nameRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchTable`: [table](https://create.roblox.com/docs/luau/tables) - The table of values that will be checked through to retrieve the [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) objects present in the table that match at least one of the provided names from the `nameRangeTable`.
+
+* `nameRangeTable`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The individual [Instance.Name](https://create.roblox.com/docs/en-us/reference/engine/classes/Instance#Name) values of the instances to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the found instances.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getInstancesOfClassFromTable
+Add desc
+
+**Syntax:** `InstanceUtils:getInstancesOfClassFromTable(searchTable: {any}, className: string) → {Instance}`
+
+**Parameters:**
+
+* `searchTable`: [table](https://create.roblox.com/docs/luau/tables) - The table of values that will be checked through to retrieve the [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) objects present in the table that match the given `name`.
+
+* `className`: [string](https://create.roblox.com/docs/en-us/luau/strings) - The [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) of the instances to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the found instances.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+### getInstancesOfClassRangeFromTable
+Add desc
+
+**Syntax:** `InstanceUtils:getInstancesOfClassRangeFromTable(searchTable: {any}, classNameRangeTable: {string}) → {Instance}`
+
+**Parameters:**
+
+* `searchTable`: [table](https://create.roblox.com/docs/luau/tables) - The table of values that will be checked through to retrieve the [Instance](https://create.roblox.com/docs/reference/engine/classes/Instance) objects present in the table that match at least one of the provided names from the `nameRangeTable`.
+
+* `classNameRangeTable`: [Array](https://create.roblox.com/docs/luau/tables#arrays) - The individual [Object.ClassName](https://create.roblox.com/docs/en-us/reference/engine/classes/Object#ClassName) values of the instances to be compared to.
+
+**Returns:**
+
+* [`Array`](https://create.roblox.com/docs/luau/tables#arrays) - An array containing the found instances.
+
+**Code Example:**
+```lua
+-- TODO: Make this.
+```
+
+----
+
+InstanceUtils:getInstancesOfClassRangeFromTable
+
+InstanceUtils:getInstancesOfNameAndClassFromTable
+
+InstanceUtils:getInstancesOfNameRangeAndClassRangeFromTable
+
+InstanceUtils:getInstancesOfPropertiesFromTable
+
+InstanceUtils:getInstancesOfPropertiesRangeFromTable
+
+InstanceUtils:getInstancesOfPropertiesRangeFromTable
