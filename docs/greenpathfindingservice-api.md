@@ -12,8 +12,17 @@ Like the default [PathfindingService](https://create.roblox.com/docs/reference/e
 
 
 ### Methods
-
-
+## createPath
+Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys and values in the agentParameters table are as follows:
+| Method              | Type    | Default                       | Description |
+| ------------------- | ------- | ----------------------------- | ----------- |
+| **agentRadius**     | integer | 2                             | Determines the minimum amount of horizontal space required for empty space to be considered traversable.
+| **agentHeight**     | integer | 5                             | Determines the minimum amount of vertical space required for empty space to be considered traversable.
+| **agentCanJump**    | boolean | true                          | Determines whether jumping during pathfinding is allowed.
+| **agentCanClimb**   | boolean | false                         | Determines whether climbing [`TrussParts`](https://create.roblox.com/docs/reference/engine/classes/TrussPart) during pathfinding is allowed.
+| **agentIsGrounded** | boolean | true                          | 
+| **waypointSpacing** | number  | 4                             | Determines the spacing between intermediate waypoints in path. |
+| **costs**           | table   | {}                            | Table of materials or defined [`PathfindingModifiers`](https://create.roblox.com/docs/reference/engine/classes/PathfindingModifier) and their "cost" for traversal. Useful for making the agent prefer certain materials/regions over others. See [here](https://create.roblox.com/docs/characters/pathfinding#pathfinding-modifiers) for details. |
 ### Events
 
 ## Properties
