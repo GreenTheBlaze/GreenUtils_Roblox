@@ -46,7 +46,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Important Info:
+  - Important Info: important-info.md
   - GreenService:
     - GreenPathfindingService: greenpathfindingservice-api.md
     - GreenPhysicsService: greenphysicsservice-api.md
@@ -58,4 +58,4 @@ nav:
     - InstanceUtils API: instanceutils-api.md
     - InstanceUtils API: instanceutils-api.md
   - GreenEnum:
-    - greenPathStatus: pluspathstatus.md
+    - greenPathStatus: greenpathstatus.md
