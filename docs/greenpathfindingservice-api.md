@@ -3,14 +3,11 @@ Like the default [PathfindingService](https://create.roblox.com/docs/reference/e
 
 
 ## Summary
-----
 ### Properties
 
-----
 
 ### Methods
 
-----
 
 ### Events
 
