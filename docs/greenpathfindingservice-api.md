@@ -16,7 +16,7 @@ Like the default [PathfindingService](https://create.roblox.com/docs/reference/e
 Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys and values in the agentParameters table are as follows:
 
 <div class="result" markdown>
-    
+
 | Method              | Type    | Default | Description  |
 | :------------------ | :------ | :------ | :----------- |
 | **agentRadius**     | integer | 2       | Determines the minimum amount of horizontal space required for empty space to be considered traversable.
