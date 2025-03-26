@@ -46,13 +46,16 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Important Info:
+  - GreenService:
+    - GreenPathfindingService: greenpathfindingservice-api.md
+    - GreenPhysicsService: greenphysicsservice-api.md
+    - WebhookService: webhookservice-api.md
+    - RequestService: requestservice-api.md
   - GreenUtils:
     - Features: features.md
     - AssertionUtils API: assertionutils-api.md
     - InstanceUtils API: instanceutils-api.md
     - InstanceUtils API: instanceutils-api.md
-  - GreenService:
-    - PlusPathfindingService: pluspathfindingservice-api.md
-    - PlusPathfindingService: pluspathfindingservice-api.md
   - GreenEnum:
-    - plusPathStatus: plus-path-status.md
+    - greenPathStatus: pluspathstatus.md
