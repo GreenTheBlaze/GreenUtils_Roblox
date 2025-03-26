@@ -45,8 +45,14 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
-  - Home:
-    - Introduction: index.md
+  - Home: index.md
+  - GreenUtils:
     - Features: features.md
-    - InstanceUtils API: instanceutils-api.md
     - AssertionUtils API: assertionutils-api.md
+    - InstanceUtils API: instanceutils-api.md
+    - InstanceUtils API: instanceutils-api.md
+  - GreenService:
+    - PlusPathfindingService: pluspathfindingservice-api.md
+    - PlusPathfindingService: pluspathfindingservice-api.md
+  - GreenEnum:
+    - plusPathStatus: plus-path-status.md
