@@ -29,6 +29,7 @@ Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys 
 
 </div>
 
+
 ### Events
 
 ## Properties
