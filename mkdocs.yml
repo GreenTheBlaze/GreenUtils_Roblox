@@ -80,6 +80,5 @@ nav:
     - Features: features.md
     - AssertionUtils API: assertionutils-api.md
     - InstanceUtils API: instanceutils-api.md
-    - InstanceUtils API: instanceutils-api.md
   - GreenEnum:
     - greenPathStatus: greenpathstatus.md
