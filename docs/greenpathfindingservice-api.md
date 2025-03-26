@@ -1,4 +1,9 @@
 # GreenPathfindingService
+
+!!! info "In Development"
+
+    This service is currently under development and may not work as intended, if at all.
+
 Like the default [PathfindingService](https://create.roblox.com/docs/reference/engine/classes/PathfindingService) that Roblox uses, **GreenPathfindingService** is used to find logical paths between two points so that characters can move to different destinations without coming in contact with obstacles. However, this service differentiates from its inspirator, allowing for more advanced path generation in the air, as well as on ground. The service also takes into account obstacles and gap distances, which [PathfindingService](https://create.roblox.com/docs/reference/engine/classes/PathfindingService) fails to do in some circumstances.
 
 
@@ -11,15 +16,9 @@ Like the default [PathfindingService](https://create.roblox.com/docs/reference/e
 
 ### Events
 
-----
-
 ## Properties
 
-----
-
 ## Methods
-
-----
 
 ## Events
 
