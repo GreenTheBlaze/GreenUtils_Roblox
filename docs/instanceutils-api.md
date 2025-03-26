@@ -49,7 +49,6 @@ local yellowPart = InstanceUtils:createInstance(nil, {
    │  └─ Jarp
    └─ Bazifyer
 ]]
--- 
 local greenPart = InstanceUtils:createInstance("Part", {
    Name = "GreenPart",
    BrickColor = BrickColor.new(0, 1, 0),
