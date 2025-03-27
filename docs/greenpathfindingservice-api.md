@@ -32,14 +32,16 @@ Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys 
 | **waypointSpacing** | number  | 4       | Determines the spacing between intermediate waypoints in path.                                                                                                   |
 | **costs**           | table   | {}      | Table of materials or defined [`PathfindingModifiers`](https://create.roblox.com/docs/reference/engine/classes/PathfindingModifier) and their "cost" for traversal. Useful for making the agent prefer certain materials/regions over others. See [here](https://create.roblox.com/docs/characters/pathfinding#pathfinding-modifiers) for details. |
 
-**Syntax:** `GreenPathfindingService:createPath(agentParameters: {[string]: any) → GreenPath`
+#### Syntax
 
-**Parameters:**
+`GreenPathfindingService:createPath(agentParameters: {[string]: any) → GreenPath`
+
+#### Parameters
 
 * `agentParameters`: [Dictionary](https://create.roblox.com/docs/luau/tables#dictionaries) - Luau table which lets you fine-tune the path for the size of the agent (the humanoid that will move along the path). See above for valid keys, types, and descriptions.
 **Default Value**: "nil"
 
-**Returns:**
+#### Returns
 
 * `GreenPath` - A `GreenPath` object.
 
