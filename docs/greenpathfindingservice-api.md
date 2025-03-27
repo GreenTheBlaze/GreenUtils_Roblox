@@ -20,6 +20,7 @@ Like the default [PathfindingService](https://create.roblox.com/docs/reference/e
 ## Methods
 
 ### createPath
+
 Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys and values in the agentParameters table are as follows:
 
 | Method              | Type    | Default | Description                                                                                                                                                      |
@@ -45,7 +46,8 @@ Creates a `GreenPath` class based on the provided `agentParameters`. Valid keys 
 
 * `GreenPath` - A `GreenPath` object.
 
-**Code Samples:**
+#### Code Samples
+
 Sample required.
 
 ```lua
