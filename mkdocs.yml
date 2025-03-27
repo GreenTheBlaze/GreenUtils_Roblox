@@ -61,13 +61,13 @@ extra_javascript:
   - javascripts/tags.js
 
 markdown_extensions:
+  - tables
   - admonition
   - codehilite:
       guess_lang: false
   - toc:
       permalink: true
   - pymdownx.superfences
-  - tables
 
 nav:
   - Home: index.md
